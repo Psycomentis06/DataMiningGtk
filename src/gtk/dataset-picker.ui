@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <requires lib="gtk" version="4.0" />
+    <requires lib="Adw" version="1.0" />
+    <template class="DatasetPicker" parent="AdwApplicationWindow">
+        <property name="title">Datamining Gtk application</property>
+        <property name="default-width">800</property>
+        <property name="default-height">400</property>
+        <child>
+            <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                    <object class="GtkHeaderBar">
+                        <child type="end">
+                            <object class="GtkMenuButton">
+                                <property name="icon-name">open-menu-symbolic</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="homogeneous">true</property>
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="label">Choose your dataset</property>
+                                <property name="vexpand">true</property>
+                                <style>
+                                    <class name="title-1" />
+                                </style>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkBox">
+                                <property name="homogeneous">true</property>
+                                <property name="orientation">horizental</property>
+                                <child>
+                                    <object class="GtkButton">
+                                        <property name="label">Dataset1</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkButton">
+                                        <property name="label"> Dataset2</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </template>
+</interface>

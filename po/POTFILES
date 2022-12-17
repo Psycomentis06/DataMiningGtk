@@ -1,0 +1,6 @@
+data/com.github.psycomentis.DataMiningGtk.desktop.in
+data/com.github.psycomentis.DataMiningGtk.appdata.xml.in
+data/com.github.psycomentis.DataMiningGtk.gschema.xml
+src/main.py
+src/window.py
+src/window.ui

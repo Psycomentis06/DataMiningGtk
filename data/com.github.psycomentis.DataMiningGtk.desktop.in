@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=datamininggtk
+Exec=datamininggtk
+Icon=com.github.psycomentis.DataMiningGtk
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true
