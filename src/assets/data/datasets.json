@@ -1,0 +1,16 @@
+{
+    "datasets": [
+        {
+            "name": "dataset1",
+            "label_name": "Dataset N1",
+            "description": "",
+            "image_resource": "/com/github/psycomentis/DataMiningGtk/assets/images/dataset1.png"
+        },
+        {
+            "name": "dataset2",
+            "label_name": "Dataset N2",
+            "description": "",
+            "image_resource": "/com/github/psycomentis/DataMiningGtk/assets/images/dataset2.png"
+        }
+    ]
+}
