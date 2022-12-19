@@ -4,7 +4,8 @@
     <file preprocess="xml-stripblanks">window.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
     <file preprocess="xml-stripblanks">gtk/dataset-picker.ui</file>
-    <file>assets/dataset1.png</file>
-    <file>assets/dataset2.png</file>
+    <file>assets/images/dataset1.png</file>
+    <file>assets/images/dataset2.png</file>
+    <file>assets/data/datasets.json</file>
   </gresource>
 </gresources>
