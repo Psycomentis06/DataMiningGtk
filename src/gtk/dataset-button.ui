@@ -2,7 +2,7 @@
 <interface>
     <template class="DatasetButton">
         <object class="GtkButton" id="button">
-            <property name="action-name">app.datapicker.dataset-btn</property>
+            <signal name="clicked" handler="dataset_button_click_handler" />
             <child>
                 <object class="GtkBox">
                     <property name="orientation">vertical</property>
@@ -12,14 +12,14 @@
                         <object class="GtkImage" id="image">
                             <property name="icon-name">image-x-generic</property>
                             <property name="resource">
-                                /com/github/psycomentis/DataMiningGtk/assets/images/dataset2.png</property>
+                                /com/github/psycomentis/DataMiningGtk/assets/images/dataset1.png</property>
                             <property name="pixel-size">150</property>
                             <property name="use-fallback">true</property>
                         </object>
                     </child>
                     <child>
                         <object class="GtkLabel" id="label">
-                            <property name="label">Dataset N2</property>
+                            <property name="label">Dataset Label</property>
                         </object>
                     </child>
                 </object>

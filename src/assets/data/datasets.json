@@ -11,6 +11,12 @@
             "label_name": "Dataset N2",
             "description": "",
             "image_resource": "/com/github/psycomentis/DataMiningGtk/assets/images/dataset2.png"
+        },
+        {
+            "name": "dataset3",
+            "label_name": "Dataset N3",
+            "description": "",
+            "image_resource": "/com/github/psycomentis/DataMiningGtk/assets/images/dataset1.png"
         }
     ]
 }

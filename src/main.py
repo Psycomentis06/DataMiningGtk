@@ -49,6 +49,7 @@ class DatamininggtkApplication(Adw.Application):
         if not win:
             #win = DatamininggtkWindow(application=self)
             win = DatasetPicker(application=self)
+            win.render_buttons()
         win.present()
 
     def on_about_action(self, widget, _):

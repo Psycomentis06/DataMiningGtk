@@ -30,58 +30,6 @@
                                 <property name="homogeneous">true</property>
                                 <property name="orientation">horizontal</property>
                                 <property name="spacing">10</property>
-                                <child>
-                                    <object class="GtkButton" id="dataset_btn_1">
-                                        <property name="name">dataset-btn-1</property>
-                                        <signal name="clicked" handler="btn_click" />
-                                        <child>
-                                            <object class="GtkBox">
-                                                <property name="orientation">vertical</property>
-                                                <property name="spacing">10</property>
-                                                <property name="valign">center</property>
-                                                <child>
-                                                    <object class="GtkImage">
-                                                        <property name="icon-name">image-x-generic</property>
-                                                        <property name="resource">/com/github/psycomentis/DataMiningGtk/assets/images/dataset1.png</property>
-                                                        <property name="pixel-size">150</property>
-                                                        <property name="use-fallback">true</property>
-                                                    </object>
-                                                </child>
-                                                <child>
-                                                    <object class="GtkLabel">
-                                                       <property name="label">Dataset N1</property> 
-                                                    </object>
-                                                </child>
-                                            </object>
-                                        </child>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkButton" id="dataset_btn_2">
-                                        <property name="name">dataset-btn-2</property>
-                                        <signal name="clicked" handler="btn_click" />
-                                        <child>
-                                            <object class="GtkBox">
-                                                <property name="orientation">vertical</property>
-                                                <property name="spacing">10</property>
-                                                <property name="valign">center</property>
-                                                <child>
-                                                    <object class="GtkImage">
-                                                        <property name="icon-name">image-x-generic</property>
-                                                        <property name="resource">/com/github/psycomentis/DataMiningGtk/assets/images/dataset2.png</property>
-                                                        <property name="pixel-size">150</property>
-                                                        <property name="use-fallback">true</property>
-                                                    </object>
-                                                </child>
-                                                <child>
-                                                    <object class="GtkLabel">
-                                                       <property name="label">Dataset N2</property> 
-                                                    </object>
-                                                </child>
-                                            </object>
-                                        </child>
-                                    </object>
-                                </child>
                             </object>
                         </child>
                     </object>

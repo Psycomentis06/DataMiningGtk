@@ -1,28 +1,38 @@
 from gi.repository import Gtk, Adw, Gio, GLib 
 import json
+from .dataset_button import create_dataset_button_factory 
 
 @Gtk.Template(resource_path = '/com/github/psycomentis/DataMiningGtk/gtk/dataset-picker.ui')
 class DatasetPicker(Adw.ApplicationWindow):
     __gtype_name__ = 'DatasetPicker'
-    dataset_btn_1 = Gtk.Template.Child()
-    dataset_btn_2 = Gtk.Template.Child()
-    buttons_container = Gtk.Template.Child()
+    buttons_container: Gtk.Box = Gtk.Template.Child()
 
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+
+    def load_json_conf(self):
         #file = resource.open_stream('/com/github/psycomentis/DataMiningGtk/assets/data/datasets.json', Gio.ResourceLookupFlags.NONE)
         file: Gio.File = Gio.file_new_for_uri('resource:///com/github/psycomentis/DataMiningGtk/assets/data/datasets.json')
         f_input_stream: Gio.FileInputStream = file.read()
+        # Why 8192
+        # https://amolenaar.github.io/pgi-docgen/Gio-2.0/classes/InputStream.html#Gio.InputStream.read_bytes
+        # At least for now
         json_bytes_data = f_input_stream.read_bytes(8192).get_data()
-        json_obj = json.loads(json_bytes_data)
+        return json.loads(json_bytes_data)
+
+    def render_buttons(self):
+        json_obj = self.load_json_conf()
         for item in json_obj['datasets']:
-            print(item['name'])
+            name = item['name']
+            label_name = item['label_name']
+            description = item['description']
+            image_resource = item['image_resource']
+            button_widget = create_dataset_button_factory(name=name, label_name=label_name, description=description, image_resource=image_resource) 
+            self.buttons_container.append(button_widget)
 
 
-    def render_buttons():
-        pass
-
-    def button_handler():
-        pass
+    #@Gtk.Template.Callback('dataset_button_click_handler')
+    def button_handler(self, widget: Gtk.Button):
+        print(widget.get_name())
