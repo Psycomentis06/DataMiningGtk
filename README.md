@@ -12,9 +12,37 @@ This app is for learning purposes. nothing serious :)
 
 ##### How to build and install
 
+###### Requirements 
+
+**Python Packages**
+
+- mlxtend
+
+- PyGObject
+
+- PyGObject-stubs
+
+- pandas
+
+- scikit-learn
+
+- numpy
+
+- matplotlib
+
+- seaborn
+
+- ipykernel
+
+- openpyxl
+
+**Gtk Sdk**
+
+To download the SDK please refer to [Gtk's official download page](https://www.gtk.org/)
+
 ###### 1- Linux
 
-run with:
+Using *Flatpack*:
 
     $ flatpak-builder flatpak-build-dir com.github.psycomentis.DataMiningGtk.json --force-clean --user --install
 
@@ -22,6 +50,16 @@ build with:
 
     $ flatpak run com.github.psycomentis.DataMiningGtk//master
 
+Using *Meson*:
+
+    $ meson setup builddir
+    $ cd builddir
+    $ ninja
+    $ ninja install
+
+
 ###### 2- Windows 
 
-Coming Soon
+[Installing GTK4 apps on Windows](https://stdin.top/posts/gtk4-on-windows/) 
+
+[Helpful link](https://test.www.collabora.com/news-and-blog/blog/2021/04/29/build-your-own-application-with-gtk4-as-a-meson-subproject/)
