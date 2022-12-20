@@ -10,7 +10,7 @@
             <object class="GtkBox">
                 <property name="orientation">vertical</property>
                 <child>
-                    <object class="GtkHeaderBar" />
+                    <object class="AdwHeaderBar" />
                 </child>
                 <child>
                     <object class="GtkBox">

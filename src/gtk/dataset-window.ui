@@ -5,6 +5,7 @@
     <template class="DatasetWindow" parent="AdwApplicationWindow">
         <property name="default-width">800</property>
         <property name="default-height">400</property>
+        <property name="title">Dataset Window</property>
         <child>
             <object class="GtkBox">
                 <property name="orientation">vertical</property>
@@ -12,13 +13,46 @@
                     <object class="GtkHeaderBar">
                         <child type="end">
                             <object class="GtkMenuButton">
-                                <property name="icon-name">open-menu-symbolic</property>
+                                <property name="icon-name">view-more-symbolic</property>
                                 <property name="menu-model">primary_menu</property>
                             </object>
                         </child>
+                        <child type="start">
+                            <object class="GtkButton" id="sidebar_toggle_btn">
+                                <property name="icon-name">pan-start-symbolic</property>
+                                <!-- <property name="action-name">app.dataset_window-sidebar-toggle</property>-->
+                                <signal name="clicked" handler="dataset_sidebar_toggle"></signal>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <!-- Ui content-->
+                    <object class="GtkBox" id="container">
+                        <property name="orientation">horizontal</property>
+                        <property name="homogeneous">false</property>
+                        <property name="spacing">20</property>
                         <child>
-                            <!-- Ui content-->
-                            
+                            <object class="GtkRevealer" id='revealer'>
+                                <property name="transition-duration">400</property>
+                                <property name="transition-type">slide-right</property>
+                                <property name="vexpand">true</property>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="label">Sidebar</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkBox">
+                                <property name="hexpand">true</property>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="label">Content</property>
+                                    </object>
+                                </child>
+                            </object>
                         </child>
                     </object>
                 </child>

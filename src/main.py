@@ -28,7 +28,7 @@ from gi.repository import Gtk, Gio, Adw
 
 from .window import DatamininggtkWindow
 from .dataset_picker import DatasetPicker
-from .dataset_window import DatasetWindow
+from .dataset_window import DatasetWindow, create_dataset_window_factory
 
 
 class DatamininggtkApplication(Adw.Application):
@@ -52,7 +52,7 @@ class DatamininggtkApplication(Adw.Application):
             #win = DatamininggtkWindow(application=self)
             #win = DatasetPicker(application=self)
             #win.render_buttons()
-            win = DatasetWindow(application=self)
+            win = create_dataset_window_factory(self)
         win.present()
 
     def on_about_action(self, widget, _):
