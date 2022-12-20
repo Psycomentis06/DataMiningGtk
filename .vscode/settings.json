@@ -1,6 +1,7 @@
 {
     "mesonbuild.configureOnOpen": true,
     "cSpell.words": [
-        "accels"
+        "accels",
+        "psycomentis"
     ]
 }
