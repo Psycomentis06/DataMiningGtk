@@ -20,6 +20,7 @@
 import sys
 import gi
 
+
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
 
@@ -27,6 +28,7 @@ from gi.repository import Gtk, Gio, Adw
 
 from .window import DatamininggtkWindow
 from .dataset_picker import DatasetPicker
+from .dataset_window import DatasetWindow
 
 
 class DatamininggtkApplication(Adw.Application):
@@ -48,8 +50,9 @@ class DatamininggtkApplication(Adw.Application):
         win = self.props.active_window
         if not win:
             #win = DatamininggtkWindow(application=self)
-            win = DatasetPicker(application=self)
-            win.render_buttons()
+            #win = DatasetPicker(application=self)
+            #win.render_buttons()
+            win = DatasetWindow(application=self)
         win.present()
 
     def on_about_action(self, widget, _):
@@ -59,7 +62,7 @@ class DatamininggtkApplication(Adw.Application):
                                 application_icon='com.github.psycomentis.DataMiningGtk',
                                 developer_name='Ali Amor',
                                 version='0.1.0',
-                                developers=['Ali Amor'],
+                                developers=['Ali Amor', 'Hani Belazreg'],
                                 copyright='© 2022 Ali Amor')
         about.present()
 
