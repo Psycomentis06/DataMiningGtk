@@ -9,5 +9,7 @@
     <file>assets/images/dataset1.png</file>
     <file>assets/images/dataset2.png</file>
     <file>assets/data/datasets.json</file>
+    <file>assets/samples/entry.json</file>
+    <file>assets/samples/sample.py</file>
   </gresource>
 </gresources>
