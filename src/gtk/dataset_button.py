@@ -1,4 +1,5 @@
 from gi.repository import Gtk
+from .dataset_window import *
 
 @Gtk.Template(resource_path = '/com/github/psycomentis/DataMiningGtk/gtk/dataset-button.ui')
 class DatasetButton(Gtk.Frame):
@@ -8,8 +9,9 @@ class DatasetButton(Gtk.Frame):
     image_widget: Gtk.Image = Gtk.Template.Child('image')
     button_widget: Gtk.Button = Gtk.Template.Child('button')
 
-    def __init__(self, **kwargs):
+    def __init__(self,context, **kwargs):
         super().__init__(**kwargs)
+        self.context = context
         self.window = ''
         self.name = '' 
         self.label_name = ''
@@ -22,8 +24,15 @@ class DatasetButton(Gtk.Frame):
         self.image_widget.set_from_resource(image_resource)
         self.set_child(self.button_widget)
 
+    @Gtk.Template.Callback('dataset_button_click_handler')
+    def button_handler(self, widget: Gtk.Button):
+        dataset_entry_name = widget.get_name() 
+        win = create_dataset_window_factory(application=self.context, dataset_name=dataset_entry_name)
+        win.present()
 
-def create_dataset_button_factory(name: str, label_name: str, description: str , image_resource: str):
-    dataset_button = DatasetButton()
+
+
+def create_dataset_button_factory(application: Gtk.Application, name: str, label_name: str, description: str , image_resource: str):
+    dataset_button = DatasetButton(context=application)
     dataset_button.init_widget(image_resource=image_resource, description=description, label_name=label_name, name=name)
     return dataset_button

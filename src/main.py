@@ -29,6 +29,8 @@ from gi.repository import Gtk, Gio, Adw
 from .window import DatamininggtkWindow
 from .dataset_picker import DatasetPicker
 from .dataset_window import DatasetWindow, create_dataset_window_factory
+from .file_system import *
+from .entry_file import *
 
 
 class DatamininggtkApplication(Adw.Application):
@@ -49,11 +51,14 @@ class DatamininggtkApplication(Adw.Application):
         """
         win = self.props.active_window
         if not win:
-            #win = DatamininggtkWindow(application=self)
-            #win = DatasetPicker(application=self)
-            #win.render_buttons()
-            win = create_dataset_window_factory(self)
+            # win = DatamininggtkWindow(application=self)
+            create_default_extensions_dir()
+            entry_data = EntryFile()
+            win = DatasetPicker(application=self, entry_data=entry_data.get_json_data())
+            win.render_buttons()
+            # win = create_dataset_window_factory(self)
         win.present()
+
 
     def on_about_action(self, widget, _):
         """Callback for the app.about action."""

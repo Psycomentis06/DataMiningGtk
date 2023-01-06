@@ -8,8 +8,10 @@ class DatasetPicker(Adw.ApplicationWindow):
     buttons_container: Gtk.Box = Gtk.Template.Child()
 
     
-    def __init__(self, **kwargs):
+    def __init__(self, entry_data, **kwargs):
         super().__init__(**kwargs)
+        self.entry_data = entry_data
+        self.application = kwargs['application']
 
 
     def load_json_conf(self):
@@ -23,14 +25,16 @@ class DatasetPicker(Adw.ApplicationWindow):
         return json.loads(json_bytes_data)
 
     def render_buttons(self):
-        json_obj = self.load_json_conf()
+        # json_obj = self.load_json_conf()
+        json_obj = self.entry_data
         for item in json_obj['datasets']:
-            name = item['name']
-            label_name = item['label_name']
-            description = item['description']
-            image_resource = item['image_resource']
-            button_widget = create_dataset_button_factory(name=name, label_name=label_name, description=description, image_resource=image_resource) 
-            self.buttons_container.append(button_widget)
+            if not item['name'] == 'sample':
+                name = item['name']
+                label_name = item['label_name']
+                description = item['description']
+                image_resource = item['image_resource']
+                button_widget = create_dataset_button_factory(application=self.application, name=name, label_name=label_name, description=description, image_resource=image_resource) 
+                self.buttons_container.append(button_widget)
 
 
     #@Gtk.Template.Callback('dataset_button_click_handler')
