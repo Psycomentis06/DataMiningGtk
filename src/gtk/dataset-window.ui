@@ -2,6 +2,26 @@
 <interface>
     <requires lib="gtk" version="4.0" />
     <requires lib="Adw" version="1.0" />
+    <!-- <object class="GtkListStore" id="list_store_model"> -->
+    <!--   <columns> -->
+    <!--     <column type="gint"/> -->
+    <!--     <column type="gint"/> -->
+    <!--   </columns> -->
+    <!--   <data> -->
+    <!--     <row> -->
+    <!--       <col id="0">10</col> -->
+    <!--       <col id="0">10</col> -->
+    <!--     </row> -->
+    <!--     <row> -->
+    <!--       <col id="0">5</col> -->
+    <!--       <col id="0">10</col> -->
+    <!--     </row> -->
+    <!--     <row> -->
+    <!--       <col id="0">15</col> -->
+    <!--       <col id="0">10</col> -->
+    <!--     </row> -->
+    <!--   </data> -->
+    <!-- </object> -->
     <template class="DatasetWindow" parent="AdwApplicationWindow">
         <property name="default-width">800</property>
         <property name="default-height">400</property>
@@ -33,25 +53,114 @@
                         <property name="homogeneous">false</property>
                         <property name="spacing">20</property>
                         <child>
+                          <!-- Sidebar -->
                             <object class="GtkRevealer" id='revealer'>
                                 <property name="transition-duration">400</property>
                                 <property name="transition-type">slide-right</property>
                                 <property name="vexpand">true</property>
                                 <child>
-                                    <object class="GtkLabel">
-                                        <property name="label">Sidebar</property>
+                                    <object class="GtkBox">
+                                        <property name="orientation">vertical</property>
+                                        <property name="homogeneous">false</property>
+                                        <property name="spacing">20.0</property>
+                                        <property name="margin-bottom">30.0</property>
+                                        <child>
+                                          <object class="GtkBox">
+                                            <property name="orientation">vertical</property>
+                                            <child>
+                                              <object class="GtkLabel">
+                                                <property name="label" > Support Value (%) </property>
+                                                <property name="halign" >start</property>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkSpinButton" id="support_spin_button">
+                                                <property name="numeric">true</property>
+                                                <property name="halign">start</property>
+                                                <property name="width-chars">9</property>
+                                                <!-- <property name="palceholder-text">Support Value</property> -->
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkBox">
+                                            <property name="orientation">vertical</property>
+                                            <child>
+                                              <object class="GtkLabel">
+                                                <property name="label" > Dataset size (%) </property>
+                                                <property name="halign" >start</property>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkSpinButton">
+                                                <property name="numeric">true</property>
+                                                <property name="halign">start</property>
+                                                <property name="width-chars">9</property>
+                                                <!-- <property name="palceholder-text">Support Value</property> -->
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkBox">
+                                            <property name="orientation">vertical</property>
+                                            <child>
+                                              <object class="GtkLabel">
+                                                <property name="label" > Dataset Shuffle Value (%) </property>
+                                                <property name="halign" >start</property>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkSpinButton">
+                                                <property name="numeric">true</property>
+                                                <property name="halign">start</property>
+                                                <property name="width-chars">9</property>
+                                                <!-- <property name="palceholder-text">Support Value</property> -->
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
                                     </object>
                                 </child>
                             </object>
                         </child>
                         <child>
-                            <object class="GtkBox">
+                          <!-- Content -->
+                            <object class="GtkBox" id="tree_view_container">
                                 <property name="hexpand">true</property>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">20.0</property>
                                 <child>
                                     <object class="GtkLabel">
                                         <property name="label">Content</property>
                                     </object>
                                 </child>
+                                <!-- <child> -->
+                                <!--   <object class="GtkTreeView" id="dataset_tree_view"> -->
+                                <!--     <property name="model"> list_store_model </property> -->
+                                <!--     <child> -->
+                                <!--       <object class="GtkTreeViewColumn" id="dataset_tree_view_column1"> -->
+                                <!--         <property name="title">Column 1</property> -->
+                                <!--         <child> -->
+                                <!--           <object class="GtkCellRendererText" id="cell_renderer1"> -->
+                                <!--             <property name="text"> Testing </property> -->
+                                <!--           </object> -->
+                                <!--         </child> -->
+                                <!--       </object> -->
+                                <!--     </child> -->
+                                <!--     <child> -->
+                                <!--       <object class="GtkTreeViewColumn" id="dataset_tree_view_column2"> -->
+                                <!--         <property name="title">Column 2</property> -->
+                                <!--         <child> -->
+                                <!--           <object class="GtkCellRendererText" id="cell_renderer2"> -->
+                                <!--             <property name="text"> Testing </property> -->
+                                <!--           </object> -->
+                                <!--         </child> -->
+                                <!--       </object> -->
+                                <!--     </child> -->
+                                <!--   </object> -->
+                                <!-- </child> -->
                             </object>
                         </child>
                     </object>
