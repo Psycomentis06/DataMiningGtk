@@ -31,7 +31,10 @@ datamininggtk_sources = [
   'window.py',
   'gtk/dataset_picker.py',
   'gtk/dataset_button.py',
-  'gtk/dataset_window.py' 
+  'gtk/dataset_window.py',
+  'core/dataset.py',
+  'core/entry_file.py',
+  'core/file_system.py'
 ]
 
 install_data(datamininggtk_sources, install_dir: moduledir)
