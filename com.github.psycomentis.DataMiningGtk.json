@@ -5,6 +5,7 @@
     "sdk" : "org.gnome.Sdk",
     "command" : "datamininggtk",
     "finish-args" : [
+	    "--filesystem=home:ro",
         "--share=network",
         "--share=ipc",
         "--socket=fallback-x11",
@@ -34,5 +35,8 @@
                 }
             ]
         }
-    ]
+    ],
+    "build-options" : {
+        "env" : {        }
+    }
 }
