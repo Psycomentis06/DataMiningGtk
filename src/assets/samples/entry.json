@@ -5,8 +5,9 @@
             "label_name": "Dataset Sample",
             "description": "This a sample description. Head over to $HOME/.datasets/ folder to create your own dataset",
             "image_file": "~/Pictures/icons/icon.png",
-            "image_url": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn0.iconfinder.com%2Fdata%2Ficons%2Fweb-analytics-3%2F66%2F27-1024.png&f=1&nofb=1&ipt=f1bb935c759b2eb1c65ea812454308ae9d255a8f9092ff590968661d4c09ac36&ipo=images"
-
+            "image_url": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn0.iconfinder.com%2Fdata%2Ficons%2Fweb-analytics-3%2F66%2F27-1024.png&f=1&nofb=1&ipt=f1bb935c759b2eb1c65ea812454308ae9d255a8f9092ff590968661d4c09ac36&ipo=images",
+            "module_path": "path to the module.py file e.g /home/user/.datasets/module1/module.py",
+            "class_name": "name of the class in the module file eg Module1"
         }
     ]
 }
