@@ -1,4 +1,9 @@
 from gi.repository import Gtk, Adw, GLib, GObject
+import importlib
+from importlib.machinery import SourceFileLoader
+import sys
+from .utils import *
+from .file_system import *
 from .entry_file import *
 
 @Gtk.Template(resource_path = '/com/github/psycomentis/DataMiningGtk/gtk/dataset-window.ui')
@@ -10,17 +15,26 @@ class DatasetWindow(Adw.ApplicationWindow):
     container: Gtk.Box = Gtk.Template.Child()
     # dataset_tree_view_widget: Gtk.TreeView = Gtk.Template.Child('dataset_tree_view')
     support_spin_button_widget: Gtk.SpinButton = Gtk.Template.Child('support_spin_button')
-    tree_view_containe_widget: Gtk.Box = Gtk.Template.Child('tree_view_container')
+    tree_view_container_widget: Gtk.Box = Gtk.Template.Child('tree_view_container')
 
     def __init__(self, dataset_name, **kwargs) -> None:
         super().__init__(**kwargs)
         self.dataset_name = dataset_name
         entry_file = EntryFile()
         dataset_config = entry_file.get_item_by_name(dataset_name)
-        if dataset_config is None:
-            # self.close()
-            # super().close()
-            self.destory()
+        if dataset_config is not None:
+            self.close()
+        # should append the path of python packages folder in a flatpak app
+        # todo: check system installed python versoin automatically
+        sys.path.append('/home/psycomentis06/.local/lib/python3.10/site-packages/')
+        # import dataset extension class
+        module_path = dataset_config['module_path']
+        file_name = get_filename_from_path(module_path)
+        dataset_module = import_module_from_abs_path(file_name, module_path)
+        # dataset_module = SourceFileLoader(file_name, module_path).load_module()
+        dataset_class = getattr(dataset_module, dataset_config['class_name'])
+        self.dataset_obj = dataset_class()
+
 
     def init_widgets(self):
         self.revealer_widget.set_reveal_child(True)
@@ -53,6 +67,18 @@ class DatasetWindow(Adw.ApplicationWindow):
         df = pd.DataFrame(data=data)
         store = Gtk.ListStore.new(df.dtypes)
         '''
+        store = Gtk.ListStore.new([GObject.TYPE_INT])
+        data = self.dataset_obj.get_colums().to_records(index=False)
+        for row in data:
+            store.append(list(row))
+        tree_view = Gtk.TreeView.new_with_model(store)
+        column = Gtk.TreeViewColumn.new()
+        column.set_title('This is Cell')
+        renderer = Gtk.CellRendererText.new()
+        column.pack_start(renderer, True)
+        column.add_attribute(renderer, 'text', 0)
+        tree_view.append_column(column)
+        self.tree_view_container_widget.append(tree_view)
 
 
     def update_required_properties(self):
