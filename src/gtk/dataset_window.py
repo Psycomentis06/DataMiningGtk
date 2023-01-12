@@ -13,8 +13,7 @@ class DatasetWindow(Adw.ApplicationWindow):
     revealer_widget: Gtk.Revealer = Gtk.Template.Child('revealer')
     sidebar_toggle_btn_widget: Gtk.Button = Gtk.Template.Child('sidebar_toggle_btn')
     container: Gtk.Box = Gtk.Template.Child()
-    # dataset_tree_view_widget: Gtk.TreeView = Gtk.Template.Child('dataset_tree_view')
-    support_spin_button_widget: Gtk.SpinButton = Gtk.Template.Child('support_spin_button')
+    # support_spin_button_widget: Gtk.SpinButton = Gtk.Template.Child('support_spin_button')
     tree_view_container_widget: Gtk.Box = Gtk.Template.Child('tree_view_container')
 
     def __init__(self, dataset_name, **kwargs) -> None:
@@ -38,34 +37,19 @@ class DatasetWindow(Adw.ApplicationWindow):
 
     def init_widgets(self):
         self.revealer_widget.set_reveal_child(True)
-        self.support_spin_button_widget.set_range(0.0, 100.0)
-        self.support_spin_button_widget.set_increments(5.0, 5.0)
-        # data = [
-        #         {'id': '1', 'name': 'hello'},
-        #         {'id': '2', 'name': 'hello'},
-        #         {'id': '3', 'name': 'hello'},
-        #         {'id': '4', 'name': 'hello'},
-        #         {'id': '5', 'name': 'hello'},
-        #         {'id': '6', 'name': 'hello'},
-        #         {'id': '7', 'name': 'hello'}
-        #         ]
-        # store = Gtk.ListStore.new([GObject.TYPE_STRING, GObject.TYPE_STRING])
-        # for i in range(len(data)):
-        #     iterator = store.append()
-        #     store.set(iterator, ['id', 'name'], [data[i]['id'], data[i]['name']])
-        #
-        # self.dataset_tree_view_widget.set_model(store)
+        # self.support_spin_button_widget.set_range(0.0, 100.0)
+        # self.support_spin_button_widget.set_increments(5.0, 5.0)
 
+    def load_dataset(self):
+        pass
+
+    def render_dataset_table(self):
         ''' 
            Steps to create a Gtk List View
            1- Create a GtkListStore
            2- Create a GtkTreeView
            3- Create a      GtkTreeViewColumn using GtkTreeView.append_column
            4- Create a          GtkCellRendererText using GtkTreeViewColumn.add_attribute
-
-        data = {'id': [1,2,3,4,5], 'name': ['ali', 'penn', 'gayth', 'abc', 'def']}
-        df = pd.DataFrame(data=data)
-        store = Gtk.ListStore.new(df.dtypes)
         '''
         store = Gtk.ListStore.new([GObject.TYPE_INT])
         data = self.dataset_obj.get_colums().to_records(index=False)
