@@ -58,6 +58,15 @@
                                                 <property name="numeric">true</property>
                                                 <property name="halign">start</property>
                                                 <property name="width-chars">9</property>
+                                                <property name="adjustment">
+                                                  <object class="GtkAdjustment">
+                                                    <property name="lower">0</property>
+                                                    <property name="upper">100</property>
+                                                    <property name="step-increment">5</property>
+                                                    <property name="page-increment">10</property>
+                                                    <property name="value">50</property>
+                                                  </object>
+                                                </property>
                                                 <!-- <property name="palceholder-text">Support Value</property> -->
                                               </object>
                                             </child>
@@ -77,6 +86,15 @@
                                                 <property name="numeric">true</property>
                                                 <property name="halign">start</property>
                                                 <property name="width-chars">9</property>
+                                                <property name="adjustment">
+                                                  <object class="GtkAdjustment">
+                                                    <property name="lower">40</property>
+                                                    <property name="upper">100</property>
+                                                    <property name="step-increment">5</property>
+                                                    <property name="page-increment">10</property>
+                                                    <property name="value">80</property>
+                                                  </object>
+                                                </property>
                                                 <!-- <property name="palceholder-text">Support Value</property> -->
                                               </object>
                                             </child>
@@ -96,6 +114,15 @@
                                                 <property name="numeric">true</property>
                                                 <property name="halign">start</property>
                                                 <property name="width-chars">9</property>
+                                                <property name="adjustment">
+                                                  <object class="GtkAdjustment">
+                                                    <property name="lower">0</property>
+                                                    <property name="upper">100</property>
+                                                    <property name="step-increment">5</property>
+                                                    <property name="page-increment">10</property>
+                                                    <property name="value">80</property>
+                                                  </object>
+                                                </property>
                                                 <!-- <property name="palceholder-text">Support Value</property> -->
                                               </object>
                                             </child>
@@ -112,8 +139,8 @@
                               <property name="orientation">vertical</property>
                               <property name="spacing">20.0</property>
                               <child>
-                                <object class="GtkLabel">
-                                  <property name="label">Content</property>
+                                <object class="GtkButton">
+                                  <property name="label">Load Dataset</property>
                                 </object>
                               </child>
                               <!-- Tree view will be renderer here -->
