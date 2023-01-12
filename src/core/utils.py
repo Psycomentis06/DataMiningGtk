@@ -1,5 +1,5 @@
 # import requests
-from gi.repository import GLib, Gtk, Gdk, GdkPixbuf
+from gi.repository import GLib, Gtk, Gdk, GdkPixbuf, GObject
 import importlib
 
 def load_image_from_url(url: str):
@@ -23,4 +23,16 @@ def import_module_from_abs_path(module_name: str, module_path: str):
     module = importlib.util.module_from_spec(module_spec)
     module_spec.loader.exec_module(module)
     return module
+
+def pandas_columns_types(df):
+    types_list = []
+    for col_name in df.columns:
+        col_type = df.dtypes[col_name]
+        if col_type == 'int64':
+            types_list.append(GObject.TYPE_INT64)
+        elif col_type == 'object':
+            types_list.append(GObject.TYPE_STRING)
+        elif col_type == 'float':
+            types_list.append(GObject.TYPE_FLOAT)
+    return types_list
 
