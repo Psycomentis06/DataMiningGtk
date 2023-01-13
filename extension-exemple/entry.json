@@ -1,0 +1,14 @@
+{
+    "datasets": [
+        {
+            "name": "dataset1",
+            "label_name": "Dataset N1",
+            "description": "",
+            "image_resource": "/com/github/psycomentis/DataMiningGtk/assets/images/dataset1.png",
+            "image_path": "/home/psycomentis06/",
+            "module_path": "/home/psycomentis06/.datasets/module1/module.py",
+            "class_name": "Module1"
+        }
+    ]
+}
+
