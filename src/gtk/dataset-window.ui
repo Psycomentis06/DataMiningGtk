@@ -49,12 +49,12 @@
                                             <property name="orientation">vertical</property>
                                             <child>
                                               <object class="GtkLabel">
-                                                <property name="label" > Support Value (%) </property>
+                                                <property name="label" > Min support(%) </property>
                                                 <property name="halign" >start</property>
                                               </object>
                                             </child>
                                             <child>
-                                              <object class="GtkSpinButton" id="support_spin_button">
+                                              <object class="GtkSpinButton" id="min_support_spin_button">
                                                 <property name="numeric">true</property>
                                                 <property name="halign">start</property>
                                                 <property name="width-chars">9</property>
@@ -64,7 +64,7 @@
                                                     <property name="upper">100</property>
                                                     <property name="step-increment">5</property>
                                                     <property name="page-increment">10</property>
-                                                    <property name="value">50</property>
+                                                    <property name="value">5</property>
                                                   </object>
                                                 </property>
                                                 <!-- <property name="palceholder-text">Support Value</property> -->
@@ -77,22 +77,22 @@
                                             <property name="orientation">vertical</property>
                                             <child>
                                               <object class="GtkLabel">
-                                                <property name="label" > Dataset size (%) </property>
+                                                <property name="label" > Min confidence(%) </property>
                                                 <property name="halign" >start</property>
                                               </object>
                                             </child>
                                             <child>
-                                              <object class="GtkSpinButton">
+                                              <object class="GtkSpinButton" id="min_conf_spin_button">
                                                 <property name="numeric">true</property>
                                                 <property name="halign">start</property>
                                                 <property name="width-chars">9</property>
                                                 <property name="adjustment">
                                                   <object class="GtkAdjustment">
-                                                    <property name="lower">40</property>
+                                                    <property name="lower">50</property>
                                                     <property name="upper">100</property>
                                                     <property name="step-increment">5</property>
                                                     <property name="page-increment">10</property>
-                                                    <property name="value">80</property>
+                                                    <property name="value">5</property>
                                                   </object>
                                                 </property>
                                                 <!-- <property name="palceholder-text">Support Value</property> -->
@@ -105,22 +105,22 @@
                                             <property name="orientation">vertical</property>
                                             <child>
                                               <object class="GtkLabel">
-                                                <property name="label" > Dataset Shuffle Value (%) </property>
+                                                <property name="label" > Max Length (-1 = No limit) </property>
                                                 <property name="halign" >start</property>
                                               </object>
                                             </child>
                                             <child>
-                                              <object class="GtkSpinButton">
+                                              <object class="GtkSpinButton" id="max_length_spin_button">
                                                 <property name="numeric">true</property>
                                                 <property name="halign">start</property>
-                                                <property name="width-chars">9</property>
+                                                <property name="width-chars">10</property>
                                                 <property name="adjustment">
                                                   <object class="GtkAdjustment">
-                                                    <property name="lower">0</property>
-                                                    <property name="upper">100</property>
-                                                    <property name="step-increment">5</property>
-                                                    <property name="page-increment">10</property>
-                                                    <property name="value">80</property>
+                                                    <property name="lower">-1</property>
+                                                    <property name="upper">9999999999</property>
+                                                    <property name="step-increment">50</property>
+                                                    <property name="page-increment">100</property>
+                                                    <property name="value">-1</property>
                                                   </object>
                                                 </property>
                                                 <!-- <property name="palceholder-text">Support Value</property> -->
@@ -128,25 +128,102 @@
                                             </child>
                                           </object>
                                         </child>
-                                    </object>
+                                        <child>
+                                          <object class="GtkBox">
+                                            <property name="orientation">vertical</property>
+                                            <child>
+                                              <object class="GtkLabel">
+                                                <property name="label" > Low Memory </property>
+                                                <property name="halign" >start</property>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkSwitch" id="low_memory_switch">
+                                                <property name="halign">start</property>
+                                                <property name="active">true</property>
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkBox">
+                                            <property name="orientation">vertical</property>
+                                            <child>
+                                              <object class="GtkLabel">
+                                                <property name="label" > Selectable value(%) </property>
+                                                <property name="halign" >start</property>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkDropDown" id="selectable_dropdown">
+                                                <property name="model">
+                                                  <object class="GtkStringList">
+                                                    <items>
+                                                      <item>No Dataset Selected yet</item>
+                                                    </items>
+                                                  </object>
+                                                </property>
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkBox">
+                                            <property name="orientation">vertical</property>
+                                            <child>
+                                              <object class="GtkButton" id="set_subject_value_btn">
+                                                <property name="label">Set Subject Value</property>
+                                                <signal name="clicked" handler="set_subject_value_handler" />
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkBox">
+                                            <property name="orientation">vertical</property>
+                                            <child>
+                                              <object class="GtkButton" id="get_frequent_items_btn">
+                                                <property name="label">Get Frequent Items</property>
+                                                <signal name="clicked" handler="get_frequent_items_handler" />
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkBox">
+                                            <property name="orientation">vertical</property>
+                                            <child>
+                                              <object class="GtkButton" id="get_rules_btn">
+                                                <property name="label">Get Rules</property>
+                                                <signal name="clicked" handler="get_rules_handler" />
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                      </object>
                                 </child>
                             </object>
                           </child>
                           <child>
-                            <!-- Content -->
-                            <object class="GtkBox" id="tree_view_container">
-                              <property name="hexpand">true</property>
-                              <property name="orientation">vertical</property>
-                              <property name="spacing">20.0</property>
+                            <object class="GtkScrolledWindow">
                               <child>
-                                <object class="GtkButton">
-                                  <property name="label">Load Dataset</property>
+                                <!-- Content -->
+                                <object class="GtkBox" id="tree_view_container">
+                                  <property name="hexpand">true</property>
+                                  <property name="orientation">vertical</property>
+                                  <property name="spacing">20.0</property>
+                                  <child>
+                                    <object class="GtkButton">
+                                      <property name="label">Load Dataset</property>
+                                      <signal name="clicked" handler="load_dataset_handler"/>
+                                    </object>
+                                  </child>
+                                  <!-- Tree view will be renderer here -->
                                 </object>
                               </child>
-                              <!-- Tree view will be renderer here -->
                             </object>
                           </child>
-                      </object>
+                        </object>
                 </child>
             </object>
         </child>
