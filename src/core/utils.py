@@ -36,3 +36,15 @@ def pandas_columns_types(df):
             types_list.append(GObject.TYPE_FLOAT)
     return types_list
 
+def list_store_col_types(df):
+    # 1 for the index column
+    cols_number = df.shape[1] + 1
+    return [GObject.TYPE_STRING for x in range(cols_number)]
+
+def dataframe_stringify_cols(df):
+    for col in df.columns:
+        if not df.dtypes[col] == 'string':
+            df[col] = df[col].astype(str)
+    df.index = df.index.astype(str)
+    return df
+
