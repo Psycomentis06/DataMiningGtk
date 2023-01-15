@@ -1,4 +1,4 @@
-from gi.repository import Gtk
+from gi.repository import Gtk, Gio, GdkPixbuf
 from .dataset_window import *
 
 @Gtk.Template(resource_path = '/com/github/psycomentis/DataMiningGtk/gtk/dataset-button.ui')
@@ -18,10 +18,15 @@ class DatasetButton(Gtk.Frame):
         self.description = ''
         self.image_resource = None
 
-    def init_widget(self, name: str, label_name: str, description: str , image_resource: str):
+    def init_widget(self, name: str, label_name: str, description: str , image_resource: str, image_path = None):
         self.label_widget.set_text(label_name)
         self.button_widget.set_name(name)
         self.image_widget.set_from_resource(image_resource)
+        if not image_path is None:
+            file = Gio.file_new_for_path(image_path)
+            file_stream = file.read()
+            pixbuf_img = GdkPixbuf.Pixbuf.new_from_stream(file_stream)
+            self.image_widget.set_from_pixbuf(pixbuf_img)
         self.set_child(self.button_widget)
 
     @Gtk.Template.Callback('dataset_button_click_handler')
@@ -32,7 +37,7 @@ class DatasetButton(Gtk.Frame):
 
 
 
-def create_dataset_button_factory(application: Gtk.Application, name: str, label_name: str, description: str , image_resource: str):
+def create_dataset_button_factory(application: Gtk.Application, name: str, label_name: str, description: str , image_resource: str, image_path = None):
     dataset_button = DatasetButton(context=application)
-    dataset_button.init_widget(image_resource=image_resource, description=description, label_name=label_name, name=name)
+    dataset_button.init_widget(image_resource=image_resource, description=description, label_name=label_name, name=name, image_path=image_path)
     return dataset_button

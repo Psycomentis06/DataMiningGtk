@@ -33,7 +33,10 @@ class DatasetPicker(Adw.ApplicationWindow):
                 label_name = item['label_name']
                 description = item['description']
                 image_resource = item['image_resource']
-                button_widget = create_dataset_button_factory(application=self.application, name=name, label_name=label_name, description=description, image_resource=image_resource) 
+                image_path = None
+                if 'image_path' in item:
+                    image_path = item['image_path']
+                button_widget = create_dataset_button_factory(application=self.application, name=name, label_name=label_name, description=description, image_resource=image_resource, image_path=image_path)
                 self.buttons_container.append(button_widget)
 
 
